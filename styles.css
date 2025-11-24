@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Stack Sans Headline', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.content {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+}
+
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.word {
+    font-family: 'Stack Sans Headline', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 12vw, 8rem);
+    line-height: 1.1;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    position: relative;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    
+    /* Efeito glossy/reflexivo */
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 1) 25%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.8) 75%,
+        rgba(255, 255, 255, 0.6) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Highlight horizontal no meio das letras */
+    position: relative;
+}
+
+.word::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.8) 30%,
+        rgba(255, 255, 255, 0.9) 35%,
+        rgba(255, 255, 255, 0.8) 40%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: -1;
+}
+
+/* Reflexo abaixo do texto */
+.word::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(-1);
+    opacity: 0.15;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(2px);
+    margin-top: 0.2em;
+}
+
+.website {
+    font-family: 'Stack Sans Headline', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Informações do projeto (ocultas visualmente, mas acessíveis para SEO) */
+.project-info {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .coming-soon {
+        gap: 0.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .word {
+        font-size: clamp(2.5rem, 15vw, 6rem);
+    }
+    
+    .website {
+        font-size: clamp(0.75rem, 3vw, 1rem);
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .coming-soon {
+        gap: 0.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .word {
+        font-size: clamp(2rem, 18vw, 5rem);
+        letter-spacing: 0.01em;
+    }
+    
+    .website {
+        font-size: clamp(0.625rem, 4vw, 0.875rem);
+    }
+}
+
+/* Ajustes para telas muito grandes */
+@media (min-width: 1920px) {
+    .word {
+        font-size: 10rem;
+    }
+    
+    .website {
+        font-size: 1.25rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
